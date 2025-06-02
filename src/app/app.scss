@@ -1,0 +1,14 @@
+.available {
+    background-color: green;
+}
+
+.unavailable {
+    background-color: red;
+}
+
+table > tr:nth-child(odd) {
+    background-color: green;
+}
+table > tr:nth-child(even) {
+    background-color: red;
+}
