@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Login } from './login';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppMaterialModule } from '../app-material-module';
+import { Help } from '../component/help/help';
 
 const getSubmitButton = (fixture: ComponentFixture<Login>) => {
   return fixture.nativeElement.querySelector('button[type="submit"]');
@@ -20,7 +21,7 @@ describe('Login', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [Login],
+      declarations: [Login, Help],
       imports: [
         ReactiveFormsModule,
         AppMaterialModule

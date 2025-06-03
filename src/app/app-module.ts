@@ -6,11 +6,15 @@ import { App } from './app';
 import { Login } from './login/login';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppMaterialModule } from './app-material-module';
+import { Dummy } from './component/dummy/dummy';
+import { Help } from './component/help/help';
 
 @NgModule({
   declarations: [
     App,
-    Login
+    Login,
+    Dummy,
+    Help
   ],
   imports: [
     BrowserModule,

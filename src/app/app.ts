@@ -8,4 +8,9 @@ import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
   styleUrl: './app.scss'
 })
 export class App {
+  label: string = 'Angular CRM';
+
+  consol(valueFromChild: string): void {
+    console.log('Hello from dummy', valueFromChild);
+  }
 }
