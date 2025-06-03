@@ -1,15 +1,22 @@
 import { TestBed } from '@angular/core/testing';
-import { RouterModule } from '@angular/router';
 import { App } from './app';
+import { Login } from './login/login';
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'crm-login',
+  template: '',
+  standalone: false,
+})
+class MockLoginComponent {
+}
+
 
 describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterModule.forRoot([])
-      ],
       declarations: [
-        App
+        App, MockLoginComponent
       ],
     }).compileComponents();
   });
