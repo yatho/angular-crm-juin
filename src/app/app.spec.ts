@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { App } from './app';
 import { Component } from '@angular/core';
+import { AppMaterialModule } from './app-material-module';
 
 @Component({
   selector: 'crm-login',
@@ -16,6 +17,9 @@ describe('App', () => {
     await TestBed.configureTestingModule({
       declarations: [
         App, MockLoginComponent
+      ],
+      imports: [
+        AppMaterialModule
       ],
     }).compileComponents();
   });
