@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { Authentication } from './authentication';
 
 function checkPassword(c: AbstractControl): ValidationErrors | null {
   if (c.value.length < 5) {
@@ -17,14 +18,28 @@ function checkPassword(c: AbstractControl): ValidationErrors | null {
   styleUrl: './login.scss'
 })
 export class Login {
+  private readonly authentService = inject(Authentication);
+
   protected loginForm = new FormGroup({
     login: new FormControl('', {
       validators: [Validators.required, Validators.minLength(3)],
+      nonNullable: true
     }),
-    password: new FormControl('', [checkPassword])
+    password: new FormControl('', {
+      validators: [Validators.required, checkPassword],
+      nonNullable: true
+    })
   });
 
   submit() {
-    console.log('Login:', this.loginForm.value, this.loginForm.controls.login.errors);
+    if (this.loginForm.invalid) return;
+
+    const {login, password} = this.loginForm.getRawValue();
+    const user = this.authentService.authentUser(login, password);
+    if (!user) {
+      console.error('Authentication failed');
+      return;
+    }
+    console.log(user);
   }
 }
