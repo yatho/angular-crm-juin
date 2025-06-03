@@ -18,10 +18,10 @@ function checkPassword(c: AbstractControl): ValidationErrors | null {
 })
 export class Login {
   protected loginForm = new FormGroup({
-    login: new FormControl('admin', {
+    login: new FormControl('', {
       validators: [Validators.required, Validators.minLength(3)],
     }),
-    password: new FormControl('password', [checkPassword])
+    password: new FormControl('', [checkPassword])
   });
 
   submit() {
