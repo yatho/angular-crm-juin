@@ -26,3 +26,8 @@
 </div>
 
 <router-outlet />
+
+{{phone}}
+{{phone | phone}}
+
+<input type="text" [value]="phone | phone" />

@@ -11,6 +11,7 @@ import { Help } from './component/help/help';
 import { Home } from './home/home';
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { jWTInterceptor } from './common/jwt-interceptor';
+import { PhonePipe } from './common/phone-pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { jWTInterceptor } from './common/jwt-interceptor';
     Login,
     Dummy,
     Help,
-    Home
+    Home,
+    PhonePipe
   ],
   imports: [
     BrowserModule,

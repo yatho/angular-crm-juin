@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './app.scss'
 })
 export class App {
+  public phone = '0601020304';
 }
