@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Authentication } from './authentication';
+import { Router } from '@angular/router';
 
 function checkPassword(c: AbstractControl): ValidationErrors | null {
   if (c.value.length < 5) {
@@ -19,6 +20,7 @@ function checkPassword(c: AbstractControl): ValidationErrors | null {
 })
 export class Login {
   private readonly authentService = inject(Authentication);
+  private readonly router = inject(Router);
 
   protected loginForm = new FormGroup({
     login: new FormControl('', {
@@ -41,5 +43,6 @@ export class Login {
       return;
     }
     console.log(user);
+    this.router.navigateByUrl('/home');
   }
 }
