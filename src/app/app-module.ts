@@ -8,13 +8,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppMaterialModule } from './app-material-module';
 import { Dummy } from './component/dummy/dummy';
 import { Help } from './component/help/help';
+import { Home } from './home/home';
 
 @NgModule({
   declarations: [
     App,
     Login,
     Dummy,
-    Help
+    Help,
+    Home
   ],
   imports: [
     BrowserModule,
