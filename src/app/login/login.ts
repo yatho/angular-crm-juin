@@ -22,6 +22,10 @@ export class Login {
   private readonly authentService = inject(Authentication);
   private readonly router = inject(Router);
 
+  constructor() {
+    this.authentService.disconnect();
+  }
+
   protected loginForm = new FormGroup({
     login: new FormControl('', {
       validators: [Validators.required, Validators.minLength(3)],

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Login } from './login/login';
 import { Home } from './home/home';
+import { authenticationGuard } from './login/authentication-guard';
 
 const routes: Routes = [
   {
@@ -15,11 +16,13 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: Home
+    component: Home,
+    canActivate: [authenticationGuard]
   },
   {
     path: '**',
-    redirectTo: 'home'
+    redirectTo: '/home',
+    pathMatch: 'full'
   }
 ];
 
