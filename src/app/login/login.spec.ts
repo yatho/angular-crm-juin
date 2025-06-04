@@ -4,7 +4,8 @@ import { Login } from './login';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppMaterialModule } from '../app-material-module';
 import { Help } from '../component/help/help';
-import { Authentication } from './authentication';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 const getSubmitButton = (fixture: ComponentFixture<Login>) => {
   return fixture.nativeElement.querySelector('button[type="submit"]');
@@ -26,6 +27,10 @@ describe('Login', () => {
       imports: [
         ReactiveFormsModule,
         AppMaterialModule
+      ],
+      providers: [
+        provideHttpClient(),
+        provideHttpClientTesting()
       ]
     })
     .compileComponents();

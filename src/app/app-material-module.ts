@@ -3,6 +3,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 const importExport = [
@@ -10,7 +12,9 @@ const importExport = [
   MatInputModule,
   MatToolbarModule,
   MatFormFieldModule,
-  MatIconModule
+  MatIconModule,
+  MatTableModule,
+  MatSelectModule
 ];
 
 @NgModule({

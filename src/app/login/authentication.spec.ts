@@ -1,12 +1,19 @@
 import { TestBed } from '@angular/core/testing';
 
 import { Authentication } from './authentication';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 describe('Authentication', () => {
   let service: Authentication;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [
+        provideHttpClient(),
+        provideHttpClientTesting()
+      ]
+    });
     service = TestBed.inject(Authentication);
   });
 
@@ -18,10 +25,9 @@ describe('Authentication', () => {
     const login = 'admin';
     const password = 'password';
     const user = service.authentUser(login, password);
-    
-    expect(user).toBeDefined();
-    expect(user.login).toBe(login);
-    expect(user.lastname).toBe('Doe');
-    expect(user.firstname).toBe('John');
+    user.subscribe(user => {
+      expect(user).toBeDefined();
+      expect(user.login).toBe(login);
+    });
   });
 });

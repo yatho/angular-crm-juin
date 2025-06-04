@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { App } from './app';
 import { Component } from '@angular/core';
 import { AppMaterialModule } from './app-material-module';
+import { provideRouter, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'crm-login',
@@ -19,8 +20,9 @@ describe('App', () => {
         App, MockLoginComponent
       ],
       imports: [
-        AppMaterialModule
-      ],
+        AppMaterialModule,
+        RouterModule.forRoot([]) // Assuming you want to provide an empty route configuration
+      ]
     }).compileComponents();
   });
 

@@ -13,6 +13,13 @@
                 </a>
             </span>
             <span>
+                <a [routerLinkActive]="'is-active'" routerLink="/consumer"
+                    mat-icon-button
+                    matTooltip="Clients">
+                    <mat-icon>list</mat-icon>
+                </a>
+            </span>
+            <span>
                 <a
                 mat-icon-button
                 matTooltip="Login"
@@ -26,8 +33,3 @@
 </div>
 
 <router-outlet />
-
-{{phone}}
-{{phone | phone}}
-
-<input type="text" [value]="phone | phone" />
