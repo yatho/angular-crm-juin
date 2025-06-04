@@ -9,7 +9,8 @@ import { AppMaterialModule } from './app-material-module';
 import { Dummy } from './component/dummy/dummy';
 import { Help } from './component/help/help';
 import { Home } from './home/home';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
+import { jWTInterceptor } from './common/jwt-interceptor';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideHttpClient(withFetch())
+    provideHttpClient(withFetch(), withInterceptors([jWTInterceptor]))
   ],
   bootstrap: [App]
 })
