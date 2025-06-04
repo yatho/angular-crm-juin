@@ -12,7 +12,8 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: Login
+    component: Login,
+    title: 'Login',
   },
   {
     path: 'home',

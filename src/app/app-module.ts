@@ -9,6 +9,7 @@ import { AppMaterialModule } from './app-material-module';
 import { Dummy } from './component/dummy/dummy';
 import { Help } from './component/help/help';
 import { Home } from './home/home';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { Home } from './home/home';
     AppMaterialModule
   ],
   providers: [
-    provideBrowserGlobalErrorListeners()
+    provideBrowserGlobalErrorListeners(),
+    provideHttpClient(withFetch())
   ],
   bootstrap: [App]
 })

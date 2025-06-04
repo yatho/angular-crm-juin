@@ -41,12 +41,14 @@ export class Login {
     if (this.loginForm.invalid) return;
 
     const {login, password} = this.loginForm.getRawValue();
-    const user = this.authentService.authentUser(login, password);
-    if (!user) {
-      console.error('Authentication failed');
-      return;
-    }
-    console.log(user);
-    this.router.navigateByUrl('/home');
+    this.authentService.authentUser(login, password).subscribe({
+      next: (user) => {
+        console.log(user);
+        this.router.navigateByUrl('/home');
+      },
+      error: (err) => {
+        console.error('Authentication failed');
+      }
+    });
   }
 }
