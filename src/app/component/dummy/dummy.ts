@@ -1,20 +1,15 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 @Component({
-  selector: 'crm-dummy',
-  standalone: false,
-  templateUrl: './dummy.html',
-  styleUrl: './dummy.scss'
+    selector: 'crm-dummy',
+    templateUrl: './dummy.html',
+    styleUrl: './dummy.scss'
 })
 export class Dummy {
-
-  @Input()
-  protected label: string = '';
-
-  @Output()
-  protected clicked = new EventEmitter<string>();
+  protected readonly label = input<string>('');
+  protected readonly clicked = output<string>();
 
   public onClick(): void {
-    this.clicked.emit(this.label);
+    this.clicked.emit(this.label());
   }
 }

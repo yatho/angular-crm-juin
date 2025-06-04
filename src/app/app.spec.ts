@@ -1,13 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 import { App } from './app';
-import { Component } from '@angular/core';
-import { AppMaterialModule } from './app-material-module';
+import { Component, provideZonelessChangeDetection } from '@angular/core';
 import { provideRouter, RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'crm-login',
-  template: '',
-  standalone: false,
+    selector: 'crm-login',
+    template: '',
+    imports: [],
 })
 class MockLoginComponent {
 }
@@ -16,14 +15,15 @@ class MockLoginComponent {
 describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
-        App, MockLoginComponent
-      ],
-      imports: [
-        AppMaterialModule,
-        RouterModule.forRoot([]) // Assuming you want to provide an empty route configuration
-      ]
-    }).compileComponents();
+    imports: [
+        MockLoginComponent,
+        App
+    ],
+    providers: [
+      provideRouter([]),
+        provideZonelessChangeDetection()
+    ]
+}).compileComponents();
   });
 
   it('should create the app', () => {

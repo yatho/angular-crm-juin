@@ -2,10 +2,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Login } from './login';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AppMaterialModule } from '../app-material-module';
 import { Help } from '../component/help/help';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { provideZonelessChangeDetection } from '@angular/core';
 
 const getSubmitButton = (fixture: ComponentFixture<Login>) => {
   return fixture.nativeElement.querySelector('button[type="submit"]');
@@ -23,16 +23,16 @@ describe('Login', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [Login, Help],
-      imports: [
+    imports: [
         ReactiveFormsModule,
-        AppMaterialModule
-      ],
-      providers: [
+        Login, Help
+    ],
+    providers: [
         provideHttpClient(),
-        provideHttpClientTesting()
-      ]
-    })
+        provideHttpClientTesting(),
+        provideZonelessChangeDetection()
+    ]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(Login);
@@ -64,9 +64,9 @@ describe('Login', () => {
       login: 'admin',
       password: 'password'
     });
-    expect(component['loginForm'].valid).toBeTrue();
+    expect(component['loginForm'].valid).toBeTruthy();
     expect(component['loginForm'].errors).toBeNull();
 
-    expect(button.disabled).toBeFalse();
+    expect(button.disabled).toBeFalsy();
   });
 });

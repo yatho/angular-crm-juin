@@ -4,9 +4,9 @@ import { Fiche } from './fiche';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
-import { AppMaterialModule } from '../../app-material-module';
 import { Help } from '../../component/help/help';
 import { ReactiveFormsModule } from '@angular/forms';
+import { provideZonelessChangeDetection } from '@angular/core';
 
 describe('Fiche', () => {
   let component: Fiche;
@@ -14,17 +14,17 @@ describe('Fiche', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [Fiche, Help],
-      providers: [
+    providers: [
         provideRouter([]),
         provideHttpClient(),
-        provideHttpClientTesting()
-      ],
-      imports: [
-        AppMaterialModule,
-        ReactiveFormsModule
-      ]
-    })
+        provideHttpClientTesting(),
+        provideZonelessChangeDetection()
+    ],
+    imports: [
+        ReactiveFormsModule,
+        Fiche, Help
+    ]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(Fiche);

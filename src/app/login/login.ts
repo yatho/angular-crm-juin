@@ -1,7 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Authentication } from './authentication';
 import { Router } from '@angular/router';
+import { MatFormField, MatLabel, MatInput } from '@angular/material/input';
+import { Help } from '../component/help/help';
+import { MatButton } from '@angular/material/button';
 
 function checkPassword(c: AbstractControl): ValidationErrors | null {
   if (c.value.length < 5) {
@@ -13,10 +16,10 @@ function checkPassword(c: AbstractControl): ValidationErrors | null {
 }
 
 @Component({
-  selector: 'crm-login',
-  standalone: false,
-  templateUrl: './login.html',
-  styleUrl: './login.scss'
+    selector: 'crm-login',
+    templateUrl: './login.html',
+    styleUrl: './login.scss',
+    imports: [ReactiveFormsModule, MatFormField, MatLabel, MatInput, Help, MatButton]
 })
 export class Login {
   private readonly authentService = inject(Authentication);

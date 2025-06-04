@@ -3,9 +3,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { List } from './list';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
-import { AppMaterialModule } from '../../app-material-module';
 import { FormsModule } from '@angular/forms';
-import { provideRouter, RouterModule } from '@angular/router';
+import {  provideRouter } from '@angular/router';
+import { provideZonelessChangeDetection } from '@angular/core';
 
 describe('List', () => {
   let component: List;
@@ -13,17 +13,17 @@ describe('List', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [List],
-      providers: [
+    providers: [
         provideHttpClient(),
         provideHttpClientTesting(),
-      ],
-      imports: [
-        AppMaterialModule,
+        provideRouter([]),
+        provideZonelessChangeDetection()
+    ],
+    imports: [
         FormsModule,
-        RouterModule.forRoot([]) // Assuming you want to provide an empty route configuration
-      ]
-    })
+        List
+    ]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(List);

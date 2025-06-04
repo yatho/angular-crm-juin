@@ -1,12 +1,7 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { Login } from './login/login';
-import { Home } from './home/home';
+import { Routes } from '@angular/router';
 import { authenticationGuard } from './login/authentication-guard';
-import { List } from './consumers/list/list';
-import { Fiche } from './consumers/fiche/fiche';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: '',
     redirectTo: 'login',
@@ -14,27 +9,27 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: Login,
+    loadComponent: () => import('./login/login').then(m => m.Login),
     title: 'Login',
   },
   {
     path: 'home',
-    component: Home,
+    loadComponent: () => import('./home/home').then(m => m.Home),
     canActivate: [authenticationGuard]
   },
   {
     path: 'consumer',
-    component: List,
+    loadComponent: () => import('./consumers/list/list').then(m => m.List),
     canActivate: [authenticationGuard]
   },
   {
     path: 'consumer-fiche', 
-    component: Fiche,
+    loadComponent: () => import('./consumers/fiche/fiche').then(m => m.Fiche),
     canActivate: [authenticationGuard]
   },
   {
     path: 'consumer-fiche/:id',
-    component: Fiche,
+    loadComponent: () => import('./consumers/fiche/fiche').then(m => m.Fiche),
     canActivate: [authenticationGuard]
   }, 
   {
@@ -43,9 +38,3 @@ const routes: Routes = [
     pathMatch: 'full'
   }
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }

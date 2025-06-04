@@ -12,9 +12,9 @@ export class Consumer {
   find(lastnameFilter?: string): Observable<ConsumerData[]> {
     let params;
     if (lastnameFilter && lastnameFilter !== '') {
-      params = new HttpParams({fromObject: {q: lastnameFilter}});
+      params = new HttpParams().set('q', lastnameFilter);
     }
-    return this.http.get<ConsumerData[]>('/api/consumers', {observe: 'body', params});
+    return this.http.get<ConsumerData[]>('/api/consumers', {params});
   }
 
   getById(id: number): Observable<ConsumerData> {

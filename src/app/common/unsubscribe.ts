@@ -1,10 +1,7 @@
 import { Directive, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-@Directive({
-  selector: '[crmUnsubscribe]',
-  standalone: false
-})
+@Directive({ selector: '[crmUnsubscribe]' })
 export class Unsubscribe implements OnDestroy {
   protected subscriptionList: Array<Subscription> = [];
 

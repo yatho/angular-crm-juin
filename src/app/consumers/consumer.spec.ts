@@ -3,6 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { Consumer } from './consumer';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { provideZonelessChangeDetection } from '@angular/core';
 
 describe('Consumer', () => {
   let service: Consumer;
@@ -11,7 +12,8 @@ describe('Consumer', () => {
     TestBed.configureTestingModule({
       providers: [
         provideHttpClient(),
-        provideHttpClientTesting()
+        provideHttpClientTesting(),
+        provideZonelessChangeDetection()
       ]
     });
     service = TestBed.inject(Consumer);
