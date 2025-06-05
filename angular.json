@@ -87,6 +87,17 @@
             "tsConfig": "tsconfig.spec.json",
             "buildTarget": "::development"
           }
+        },
+        "e2e": {
+          "builder": "playwright-ng-schematics:playwright",
+          "options": {
+            "devServerTarget": "angularCRM:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "angularCRM:serve:production"
+            }
+          }
         }
       }
     }
